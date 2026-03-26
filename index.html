@@ -325,8 +325,8 @@
       color: #ccc;
       padding: 2px 0;
     }
-    .protein-meta-row .meta-key { color: #888; min-width: 60px; }
-    .protein-meta-row .meta-val { color: #e0e0e0; word-break: break-word; }
+    .protein-meta-row .meta-key { color: #999; min-width: 60px; }
+    .protein-meta-row .meta-val { color: #ccc; word-break: break-word; }
 
     /* Export panel - bottom-left */
     #export-panel {
@@ -744,6 +744,11 @@
     [data-theme="light"] .card-header { border-bottom-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .card-row .key { color: #6e6e73; }
     [data-theme="light"] .card-row .value { color: #1d1d1f; }
+    [data-theme="light"] .card-copy-row .key { color: #6e6e73; }
+    [data-theme="light"] .card-copy-row .value { color: #1d1d1f; }
+    [data-theme="light"] .protein-meta-row .meta-key { color: #6e6e73; }
+    [data-theme="light"] .protein-meta-row .meta-val { color: #1d1d1f; }
+    [data-theme="light"] .uniprot-link { color: #2563eb; }
     [data-theme="light"] .fs-section-head { color: #6e6e73; }
     [data-theme="light"] .fs-bar-label { color: #1d1d1f; }
     [data-theme="light"] .fs-bar-track { background: rgba(0,0,0,0.04); }
@@ -2826,12 +2831,15 @@ if (proteinColumn && columns[proteinColumn]) {
         div.appendChild(r);
       }
     }
-    const links = document.createElement('div');
-    links.className = 'protein-meta-row';
-    links.style.marginTop = '4px';
-    links.innerHTML = '<a class="uniprot-link" href="https://www.uniprot.org/uniprot/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px;margin-right:8px">UniProt</a>' +
-      '<a class="uniprot-link" href="https://alphafold.ebi.ac.uk/entry/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px">AlphaFold</a>';
-    div.appendChild(links);
+    // Skip auto-generated links when card already has links configured
+    if (!(metadata.card && metadata.card.links && metadata.card.links.length > 0)) {
+      const links = document.createElement('div');
+      links.className = 'protein-meta-row';
+      links.style.marginTop = '4px';
+      links.innerHTML = '<a class="uniprot-link" href="https://www.uniprot.org/uniprot/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px;margin-right:8px">UniProt</a>' +
+        '<a class="uniprot-link" href="https://alphafold.ebi.ac.uk/entry/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px">AlphaFold</a>';
+      div.appendChild(links);
+    }
     cardBody.appendChild(div);
   }
 
