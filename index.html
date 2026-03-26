@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlphaFold DB — 2,597,930 structural cluster representatives</title>
+  <title>AlphaFold DB — 2,597,930 Foldseek cluster representatives</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      background: #0a0a12;
+      background: #FFFFFF;
       color: #e0e0e0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -62,7 +62,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: #0a0a12;
+      background: #FFFFFF;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -696,7 +696,7 @@
     }
 
     /* ── Light theme ── */
-    [data-theme="light"] { background: #f5f5f7 !important; color: #1d1d1f; }
+    [data-theme="light"], [data-theme="light"] body { background: #0d0d0e !important; color: #1d1d1f; }
     [data-theme="light"] #toolbar {
       background: rgba(245, 245, 248, 0.88);
       border-color: rgba(0,0,0,0.08);
@@ -758,219 +758,6 @@
       border-right-color: rgba(0, 0, 0, 0.26);
       border-bottom-color: rgba(0, 0, 0, 0.26);
     }
-    /* ── AFDB Panel Overrides ── */
-
-    /* ── Glass-morphism for panels ── */
-    .side-panel {
-      background: rgba(14, 14, 18, 0.82) !important;
-      box-shadow: -8px 0 32px rgba(0,0,0,0.5);
-    }
-    #toolbar {
-      background: rgba(14, 14, 18, 0.82) !important;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-    }
-
-    /* ── Simplify hover tooltip ── */
-    #tooltip {
-      width: 200px !important;
-      max-width: 200px !important;
-    }
-    #tooltip .row:nth-child(n+3) { display: none !important; }
-    #tooltip .structure-container { display: none !important; }
-
-    /* ── Card panel: left side below title ── */
-    #card-stack {
-      position: fixed !important;
-      bottom: auto !important;
-      top: 52px !important;
-      left: 12px !important;
-      right: auto !important;
-      z-index: 100;
-    }
-    .card {
-      width: 380px !important;
-      background: rgba(14, 14, 18, 0.88) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-      border: 1px solid rgba(255,255,255,0.06) !important;
-      border-radius: 12px !important;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.6) !important;
-      padding: 0 !important;
-      overflow: hidden;
-    }
-    .card-header {
-      padding: 10px 14px !important;
-      margin: 0 !important;
-      border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-      background: rgba(255,255,255,0.02);
-    }
-    .card-body {
-      padding: 0 !important;
-      max-height: 75vh;
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.1) transparent;
-    }
-    .card-body::-webkit-scrollbar { width: 4px; }
-    .card-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
-    .card-label { padding: 0 !important; margin: 0 !important; }
-
-    /* Hide ALL base template card content — AFDB builds its own */
-    .card-body > .card-row,
-    .card-body > .card-copy-row,
-    .card-body > .card-structure-container,
-    .card-body > .card-links,
-    .card-body > .card-subtitle,
-    .card-body > .protein-metadata { display: none !important; }
-
-    /* ── AFDB card sections ── */
-    .afdb-card-id {
-      padding: 14px 16px 4px;
-    }
-    .afdb-card-id a {
-      color: #7fb8f0;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-    .afdb-card-id a:hover { text-decoration: underline; }
-    .afdb-card-subtitle {
-      padding: 0 16px 10px;
-      font-size: 12px;
-      color: #888;
-      font-style: italic;
-      line-height: 1.35;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .afdb-section {
-      padding: 10px 16px;
-    }
-    .afdb-section + .afdb-section {
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-    .afdb-section-head {
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #555;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-    }
-    .afdb-section-head .toggle-icon {
-      font-size: 8px;
-      color: #555;
-      transition: transform 0.2s;
-    }
-    .afdb-section.collapsed .afdb-section-content { display: none; }
-    .afdb-section.collapsed .toggle-icon { transform: rotate(-90deg); }
-
-    .afdb-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 3px 12px;
-      font-size: 12px;
-    }
-    .afdb-grid .k {
-      color: #666;
-      white-space: nowrap;
-    }
-    .afdb-grid .v {
-      color: #ccc;
-      text-align: right;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .afdb-grid .v a {
-      color: #7fb8f0;
-      text-decoration: none;
-    }
-    .afdb-grid .v a:hover { text-decoration: underline; }
-
-    .afdb-stars {
-      color: #e8b829;
-      letter-spacing: 1px;
-      font-size: 12px;
-    }
-    .afdb-stars .dim { color: #333; }
-
-    /* Structure viewer */
-    .afdb-structure-wrap {
-      width: 100%;
-      height: 260px;
-      background: #0d0d14;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .afdb-structure-wrap .molstar-container {
-      width: 100%;
-      height: 100%;
-    }
-    .afdb-structure-msg {
-      color: #555;
-      font-size: 11px;
-      text-align: center;
-    }
-
-    /* Annotations */
-    .afdb-anno-row {
-      display: flex;
-      gap: 8px;
-      font-size: 11px;
-      padding: 2px 0;
-    }
-    .afdb-anno-row .ak { color: #555; min-width: 55px; flex-shrink: 0; }
-    .afdb-anno-row .av { color: #aaa; word-break: break-word; line-height: 1.4; }
-
-    /* Links bar */
-    .afdb-links {
-      display: flex;
-      gap: 6px;
-      padding: 10px 16px 14px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-    .afdb-links a {
-      flex: 1;
-      text-align: center;
-      padding: 6px 0;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #7fb8f0;
-      text-decoration: none;
-      background: rgba(74,158,255,0.06);
-      border: 1px solid rgba(74,158,255,0.1);
-      transition: background 0.12s;
-    }
-    .afdb-links a:hover {
-      background: rgba(74,158,255,0.14);
-    }
-
-    #title {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: rgba(14, 14, 18, 0.7) !important;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 10px !important;
-    }
-
-    /* Dragging */
-    .afdb-dragging { cursor: grabbing !important; }
-    .card-header { cursor: grab; }
-
   </style>
 </head>
 <body>
@@ -980,7 +767,7 @@
     <div id="progress-text">Initializing...</div>
   </div>
 
-  <div id="title">AlphaFold DB — 2,597,930 structural cluster representatives</div>
+  <div id="title">AlphaFold DB — 2,597,930 Foldseek cluster representatives</div>
   <!-- Old controls/legend kept hidden; contents moved into panels by JS -->
   <div id="controls" style="display:none">
     <select id="color-select"></select>
@@ -1433,10 +1220,7 @@ if (hasEdges) {
     if (edgeNeedsRedraw || (event && event.isViewChanged)) renderEdges();
   });
 
-  window.addEventListener('resize', () => {
-    resizeEdgeCanvas();
-    renderEdges();
-  });
+  // Edge resize is handled by the unified resize handler below.
 
   async function toggleEdges() {
     edgesVisible = !edgesVisible;
@@ -1508,14 +1292,19 @@ async function applyColor(columnName) {
   const cmap = (col.colormap && colormaps[col.colormap]) || [fallbackPointColor];
 
   if (col.dtype === 'categorical') {
-    const mapping = new Map();
-    const z = new Float32Array(n);
+    // Collect unique values
+    const uniqueSet = new Set();
     const values = col.values;
-    for (let i = 0; i < n; i++) {
-      const v = values[i];
-      if (!mapping.has(v)) mapping.set(v, mapping.size);
-      z[i] = mapping.get(v);
-    }
+    for (let i = 0; i < n; i++) uniqueSet.add(values[i]);
+    const unique = [...uniqueSet];
+    // Sort numerically if all values are numbers
+    const allNum = unique.every(v => !isNaN(Number(v)));
+    if (allNum) unique.sort((a, b) => Number(a) - Number(b));
+    const mapping = new Map();
+    unique.forEach((v, i) => mapping.set(v, i));
+    const z = new Float32Array(n);
+    for (let i = 0; i < n; i++) z[i] = mapping.get(values[i]);
+    col._sortedMapping = mapping;
     edgeNeedsRedraw = true;
     scatterplot.set({ colorBy: 'valueA', pointColor: cmap });
     scatterplot.draw({ x, y, z, w: zeroArray }).then(() => { redrawEdges(); });
@@ -1528,13 +1317,17 @@ async function applyColor(columnName) {
   updateLegend(columnName, col);
 }
 
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function formatValue(val) {
   if (typeof val === 'number') {
     const abs = Math.abs(val);
     if (abs >= 1000 || (abs > 0 && abs < 0.01)) return val.toExponential(2);
     return val.toFixed(3);
   }
-  return String(val);
+  return escapeHtml(val);
 }
 
 function buildGradient(colors) {
@@ -1561,16 +1354,12 @@ function updateLegend(columnName, col) {
   legendTitle.textContent = columnName;
 
   if (col.dtype === 'categorical') {
-    const mapping = new Map();
-    const items = [];
-    for (let i = 0; i < col.values.length; i++) {
-      const v = col.values[i];
-      if (!mapping.has(v)) { mapping.set(v, mapping.size); items.push(v); }
-    }
+    // Use the sorted mapping built by applyColor
+    const sortedItems = col._sortedMapping ? [...col._sortedMapping.keys()] : [];
     let html = '';
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < sortedItems.length; i++) {
       html += '<div class="legend-item"><span class="legend-swatch" style="background:' +
-        cmap[i % cmap.length] + '"></span><span>' + items[i] + '</span></div>';
+        cmap[i % cmap.length] + '"></span><span>' + escapeHtml(sortedItems[i]) + '</span></div>';
     }
     legendContent.innerHTML = html;
   } else {
@@ -1605,7 +1394,7 @@ function showTooltip(idx) {
     const col = columns[name];
     if (!col) continue;
     const val = col.values[idx];
-    html += '<div class="row"><span class="key">' + name + '</span><span class="value">' + formatValue(val) + '</span></div>';
+    html += '<div class="row"><span class="key">' + escapeHtml(name) + '</span><span class="value">' + formatValue(val) + '</span></div>';
   }
   tooltipContent.innerHTML = html;
 
@@ -1624,10 +1413,17 @@ function hideTooltip() { tooltip.classList.remove('visible'); }
 scatterplot.subscribe('pointover', (idx) => showTooltip(idx));
 scatterplot.subscribe('pointout', hideTooltip);
 
-// Resize
+// Resize — unified handler for scatterplot, edges, and UI.
+// Use window.innerWidth/Height because scatterplot.set() overwrites
+// the canvas CSS to fixed pixels, so getBoundingClientRect() would
+// return the stale old size.  set() internally updates canvas pixel
+// dimensions, scale ranges, and queues a redraw; the 'drawing' event
+// then triggers edge redraw via edgeNeedsRedraw.
 window.addEventListener('resize', () => {
-  const { width, height } = canvas.getBoundingClientRect();
-  scatterplot.set({ width, height });
+  scatterplot.set({ width: window.innerWidth, height: window.innerHeight });
+  if (hasEdges) {
+    resizeEdgeCanvas();
+  }
   cardBodyMaxHeight = clampCardBodyHeight(cardBodyMaxHeight);
   applyCardSize();
 });
@@ -1832,6 +1628,7 @@ canvas.addEventListener('mouseup', (e) => {
 });
 
 function truncateString(str, maxLen) {
+  str = escapeHtml(str);
   if (!str || str.length <= maxLen) return str;
   return str.substring(0, maxLen - 3) + '...';
 }
@@ -1888,6 +1685,20 @@ function renderCardStack() {
     }
   }
 
+  // Links (from card config) — placed prominently before structure/fields
+  if (cardConfig && cardConfig.links && cardConfig.links.length > 0) {
+    html += '<div class="card-links">';
+    for (const link of cardConfig.links) {
+      let url = link.url;
+      url = url.replace(/\{([^}]+)\}/g, (match, colName) => {
+        const c = columns[colName];
+        return c ? encodeURI(String(c.values[idx])) : match;
+      });
+      html += '<a class="card-link" href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(link.label) + '</a>';
+    }
+    html += '</div>';
+  }
+
   // Structure container placeholder (only if SMILES or protein data exists)
   if (metadata.smilesColumn || metadata.proteinColumn || metadata.structuresColumn) {
     html += '<div class="card-structure-container hidden" id="card-structure"></div>';
@@ -1921,35 +1732,22 @@ function renderCardStack() {
     const colUi = (columnMeta[name] && columnMeta[name].ui) || {};
     const displayName = colUi.displayName || name;
     const displayVal = truncateString(formatValue(val), 30);
-    const isCopyable = colUi.copyable === true || (typeof val === 'string' && val.length > 0 && colUi.copyable !== false);
+    const colRole = (columnMeta[name] && columnMeta[name].role) || '';
+    const isLayoutCol = colRole.indexOf('layout') !== -1;
+    const isCopyable = colUi.copyable === true || (!isLayoutCol && typeof val === 'string' && val.length > 0 && colUi.copyable !== false);
 
     if (isCopyable && typeof val === 'string' && val.length > 0) {
       html += '<div class="card-copy-row">';
-      html += '<span class="key">' + displayName + '</span>';
+      html += '<span class="key">' + escapeHtml(displayName) + '</span>';
       html += '<span class="value">' + displayVal + '</span>';
       html += '<button class="card-copy-btn" data-value="' + String(val).replace(/"/g, '&quot;') + '">Copy</button>';
       html += '</div>';
     } else {
       html += '<div class="card-row">';
-      html += '<span class="key">' + displayName + '</span>';
+      html += '<span class="key">' + escapeHtml(displayName) + '</span>';
       html += '<span class="value">' + displayVal + '</span>';
       html += '</div>';
     }
-  }
-
-  // Links (from card config)
-  if (cardConfig && cardConfig.links && cardConfig.links.length > 0) {
-    html += '<div class="card-links">';
-    for (const link of cardConfig.links) {
-      let url = link.url;
-      // Replace {column_name} placeholders with values from this point
-      url = url.replace(/\{([^}]+)\}/g, (match, colName) => {
-        const c = columns[colName];
-        return c ? encodeURIComponent(String(c.values[idx])) : match;
-      });
-      html += '<a class="card-link" href="' + url + '" target="_blank" rel="noopener">' + link.label + '</a>';
-    }
-    html += '</div>';
   }
 
   html += '</div>'; // close card-body
@@ -2017,7 +1815,7 @@ async function buildExportColumns() {
   for (const name of labelOptions) {
     const col = await fetchColumn(name);
     if (!col) continue;
-    html += '<label><input type="checkbox" value="' + name + '" checked> ' + name + '</label>';
+    html += '<label><input type="checkbox" value="' + escapeHtml(name) + '" checked> ' + escapeHtml(name) + '</label>';
   }
   exportColumns.innerHTML = html;
 }
@@ -2267,7 +2065,7 @@ async function buildFilterSidebar() {
 
     const head = document.createElement('div');
     head.className = 'fs-section-head';
-    head.innerHTML = '<span>' + displayName + '</span><span class="fs-chevron">&#9660;</span>';
+    head.innerHTML = '<span>' + escapeHtml(displayName) + '</span><span class="fs-chevron">&#9660;</span>';
     head.addEventListener('click', () => section.classList.toggle('collapsed'));
     section.appendChild(head);
 
@@ -2307,8 +2105,8 @@ function buildCatSection(colName, col, container) {
     row.dataset.value = isOther ? '__other__' : value;
     const pct = (count / maxCount * 100).toFixed(1);
     row.innerHTML =
-      '<span class="fs-bar-label" title="' + (isOther ? 'other' : String(value).replace(/"/g, '&quot;')) + '">' +
-      (isOther ? '<i>(other)</i>' : String(value).replace(/</g, '&lt;')) + '</span>' +
+      '<span class="fs-bar-label" title="' + (isOther ? 'other' : escapeHtml(value)) + '">' +
+      (isOther ? '<i>(other)</i>' : escapeHtml(value)) + '</span>' +
       '<div class="fs-bar-track"><div class="fs-bar-total" style="width:' + pct + '%"></div>' +
       '<div class="fs-bar-selected" style="width:' + pct + '%"></div></div>' +
       '<span class="fs-bar-count">' + compactNum(count) + ' / ' + compactNum(count) + '</span>';
@@ -2655,8 +2453,8 @@ tbClear.addEventListener('click', () => { clearAllFilters(); updateToolbarCount(
 
 // ── Theme toggle ──
 const tbTheme = document.getElementById('tb-theme');
-const darkBg = [0.06, 0.06, 0.07, 1];
-const lightBg = [0.96, 0.96, 0.97, 1];
+const darkBg = [0, 0, 0, 1];
+const lightBg = [1, 1, 1, 1];
 let isDarkTheme = true;
 // Force dark background on load regardless of viz.background_color
 scatterplot.set({ backgroundColor: darkBg });
@@ -2940,7 +2738,7 @@ if (proteinColumn && columns[proteinColumn]) {
       const valEl = row.querySelector('.value');
       if (keyEl && valEl && keyEl.textContent.trim() === proteinColumn) {
         valEl.innerHTML = '<a class="uniprot-link" href="https://www.uniprot.org/uniprot/' +
-          uid + '" target="_blank" rel="noopener">' + uid + '</a>';
+          encodeURI(uid) + '" target="_blank" rel="noopener">' + escapeHtml(uid) + '</a>';
         break;
       }
     }
@@ -2963,7 +2761,7 @@ if (proteinColumn && columns[proteinColumn]) {
 
   async function loadProteinStructure(uid, container) {
     if (structureCache.get(uid) === 'error') {
-      container.innerHTML = '<span class="structure-error">No AlphaFold structure<br>for ' + uid + '</span>';
+      container.innerHTML = '<span class="structure-error">No AlphaFold structure<br>for ' + escapeHtml(uid) + '</span>';
       return;
     }
     container.innerHTML = '<span class="structure-loading">Loading 3D structure...</span>';
@@ -2971,7 +2769,7 @@ if (proteinColumn && columns[proteinColumn]) {
 
     const cifUrl = await resolveAlphaFoldUrl(uid);
     if (!cifUrl) {
-      container.innerHTML = '<span class="structure-error">No AlphaFold structure<br>for ' + uid + '</span>';
+      container.innerHTML = '<span class="structure-error">No AlphaFold structure<br>for ' + escapeHtml(uid) + '</span>';
       structureCache.set(uid, 'error');
       return;
     }
@@ -2985,7 +2783,7 @@ if (proteinColumn && columns[proteinColumn]) {
       structureCache.set(uid, 'loaded');
     } catch (err) {
       console.warn('Failed to load structure for', uid, err);
-      container.innerHTML = '<span class="structure-error">Failed to load structure<br>for ' + uid + '</span>';
+      container.innerHTML = '<span class="structure-error">Failed to load structure<br>for ' + escapeHtml(uid) + '</span>';
       structureCache.set(uid, 'error');
     }
   }
@@ -3024,15 +2822,15 @@ if (proteinColumn && columns[proteinColumn]) {
         if (!v) continue;
         const r = document.createElement('div');
         r.className = 'protein-meta-row';
-        r.innerHTML = '<span class="meta-key">' + k + '</span><span class="meta-val">' + String(v).replace(/</g, '&lt;') + '</span>';
+        r.innerHTML = '<span class="meta-key">' + escapeHtml(k) + '</span><span class="meta-val">' + escapeHtml(v) + '</span>';
         div.appendChild(r);
       }
     }
     const links = document.createElement('div');
     links.className = 'protein-meta-row';
     links.style.marginTop = '4px';
-    links.innerHTML = '<a class="uniprot-link" href="https://www.uniprot.org/uniprot/' + uid + '" target="_blank" rel="noopener" style="font-size:11px;margin-right:8px">UniProt</a>' +
-      '<a class="uniprot-link" href="https://alphafold.ebi.ac.uk/entry/' + uid + '" target="_blank" rel="noopener" style="font-size:11px">AlphaFold</a>';
+    links.innerHTML = '<a class="uniprot-link" href="https://www.uniprot.org/uniprot/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px;margin-right:8px">UniProt</a>' +
+      '<a class="uniprot-link" href="https://alphafold.ebi.ac.uk/entry/' + encodeURI(uid) + '" target="_blank" rel="noopener" style="font-size:11px">AlphaFold</a>';
     div.appendChild(links);
     cardBody.appendChild(div);
   }
@@ -3104,339 +2902,6 @@ if (structuresColumn && columns[structuresColumn]) {
   console.log('Local structure rendering enabled for column:', structuresColumn, 'format:', structuresFormat);
 } else if (structuresColumn) {
   console.log('Structures column specified but not found in columns');
-}
-// ====================================================================
-// AFDB Extension — Redesigned card, Mol*, panel controls
-// ====================================================================
-
-if (proteinColumn) {
-  const structureCache = new Map();
-  const metadataCache = new Map();
-
-  // ── Mol* lazy loader ──
-  let molstarLoadPromise = null;
-  function loadMolstar() {
-    if (molstarLoadPromise) return molstarLoadPromise;
-    molstarLoadPromise = new Promise((resolve, reject) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css';
-      document.head.appendChild(link);
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.js';
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error('Failed to load Mol*'));
-      document.head.appendChild(script);
-    });
-    return molstarLoadPromise;
-  }
-
-  const cifUrlCache = new Map();
-  async function resolveAlphaFoldUrl(id) {
-    if (cifUrlCache.has(id)) return cifUrlCache.get(id);
-    try {
-      const r = await fetch('https://alphafold.ebi.ac.uk/api/prediction/' + id);
-      if (!r.ok) { cifUrlCache.set(id, null); return null; }
-      const entries = await r.json();
-      const entry = Array.isArray(entries) ? entries[0] : entries;
-      const url = entry && entry.cifUrl ? entry.cifUrl : null;
-      cifUrlCache.set(id, url);
-      return url;
-    } catch (e) { cifUrlCache.set(id, null); return null; }
-  }
-
-  async function loadStructure(id, container) {
-    if (structureCache.get(id) === 'error') {
-      container.innerHTML = '<span class="afdb-structure-msg">No structure available</span>';
-      return;
-    }
-    container.innerHTML = '<span class="afdb-structure-msg">Loading structure\u2026</span>';
-    structureCache.set(id, 'loading');
-    const url = await resolveAlphaFoldUrl(id);
-    if (!url) {
-      container.innerHTML = '<span class="afdb-structure-msg">No AlphaFold structure</span>';
-      structureCache.set(id, 'error');
-      return;
-    }
-    try { await loadMolstar(); } catch (e) {
-      container.innerHTML = '<span class="afdb-structure-msg">Viewer unavailable</span>';
-      structureCache.set(id, 'error');
-      return;
-    }
-    container.innerHTML = '';
-    const viewerDiv = document.createElement('div');
-    viewerDiv.className = 'molstar-container';
-    container.appendChild(viewerDiv);
-    try {
-      const viewer = await molstar.Viewer.create(viewerDiv, {
-        layoutIsExpanded: false, layoutShowControls: false,
-        layoutShowRemoteState: false, layoutShowSequence: false,
-        layoutShowLog: false, layoutShowLeftPanel: false,
-        viewportShowExpand: false, viewportShowSelectionMode: false,
-        viewportShowAnimation: false,
-        collapseLeftPanel: true, collapseRightPanel: true,
-      });
-      await viewer.loadStructureFromUrl(url, 'mmcif');
-      structureCache.set(id, 'loaded');
-    } catch (err) {
-      container.innerHTML = '<span class="afdb-structure-msg">Failed to load structure</span>';
-      structureCache.set(id, 'error');
-    }
-  }
-
-  // ── UniProt fetch ──
-  async function fetchAnnotations(id, container) {
-    if (metadataCache.has(id)) {
-      const c = metadataCache.get(id);
-      if (c) renderAnno(c, container);
-      return;
-    }
-    container.innerHTML = '<span class="afdb-structure-msg">Loading\u2026</span>';
-    try {
-      const r = await fetch('https://rest.uniprot.org/uniprotkb/' + id + '.json');
-      if (!r.ok) { metadataCache.set(id, null); container.innerHTML = ''; return; }
-      const d = await r.json();
-      const m = {
-        organism: (d.organism && d.organism.scientificName) || '',
-        gene: (d.genes && d.genes[0] && d.genes[0].geneName && d.genes[0].geneName.value) || '',
-        ec: '',
-        go_f: [],
-        go_p: [],
-      };
-      if (d.proteinDescription && d.proteinDescription.recommendedName &&
-          d.proteinDescription.recommendedName.ecNumbers)
-        m.ec = d.proteinDescription.recommendedName.ecNumbers.map(e => e.value).join(', ');
-      if (d.uniProtKBCrossReferences) {
-        for (const xref of d.uniProtKBCrossReferences) {
-          if (xref.database !== 'GO') continue;
-          const p = (xref.properties || []).find(p => p.key === 'GoTerm');
-          if (!p) continue;
-          const v = p.value || '';
-          if (v.startsWith('F:')) m.go_f.push(v.slice(2));
-          else if (v.startsWith('P:')) m.go_p.push(v.slice(2));
-        }
-      }
-      metadataCache.set(id, m);
-      renderAnno(m, container);
-    } catch (e) { metadataCache.set(id, null); container.innerHTML = ''; }
-  }
-
-  function renderAnno(m, el) {
-    el.innerHTML = '';
-    const fields = [
-      { k: 'Organism', v: m.organism },
-      { k: 'Gene', v: m.gene },
-      { k: 'EC', v: m.ec },
-      { k: 'GO (F)', v: m.go_f.slice(0,4).join('; ') },
-      { k: 'GO (P)', v: m.go_p.slice(0,4).join('; ') },
-    ];
-    for (const f of fields) {
-      if (!f.v) continue;
-      const row = document.createElement('div');
-      row.className = 'afdb-anno-row';
-      row.innerHTML = '<span class="ak">' + f.k + '</span><span class="av">' +
-        String(f.v).replace(/</g, '&lt;') + '</span>';
-      el.appendChild(row);
-    }
-  }
-
-  // ── Star rating ──
-  function stars(score) {
-    const n = Math.round(score);
-    let h = '<span class="afdb-stars">';
-    for (let i = 1; i <= 5; i++) h += i <= n ? '\u2605' : '<span class="dim">\u2605</span>';
-    return h + '</span>';
-  }
-
-  // Helper to read a column value
-  function colVal(name, idx) {
-    const c = columns[name];
-    if (!c) return null;
-    let v = c.values[idx];
-    if (c.dictionary && typeof v === 'number') v = c.dictionary[v];
-    return v;
-  }
-
-  function fmt(v) {
-    if (v == null || v === '' || (typeof v === 'number' && isNaN(v))) return null;
-    if (typeof v === 'number') return v % 1 === 0 ? v.toLocaleString() : v.toFixed(2);
-    return String(v);
-  }
-
-  // ── Override card rendering ──
-  cardStack.addEventListener('cardrendered', async (e) => {
-    const { idx } = e.detail;
-    const proteinCol = columns[proteinColumn];
-    if (!proteinCol) return;
-    const uid = proteinCol.values[idx];
-    if (!uid || typeof uid !== 'string') return;
-
-    const cards = cardStack.querySelectorAll('.card');
-    const card = cards[cards.length - 1];
-    if (!card) return;
-
-    const cardBody = card.querySelector('.card-body');
-    if (!cardBody) return;
-
-    // Clear base template content (the flat rows)
-    // We'll rebuild entirely
-    const label = card.querySelector('.card-label');
-    if (label) label.style.display = 'none';
-
-    // ── ID + subtitle ──
-    const idDiv = document.createElement('div');
-    idDiv.className = 'afdb-card-id';
-    idDiv.innerHTML = '<a href="https://www.uniprot.org/uniprot/' + uid +
-      '" target="_blank" rel="noopener">' + uid + '</a>';
-    cardBody.prepend(idDiv);
-
-    const nameVal = colVal('protein_name', idx);
-    if (nameVal && nameVal !== 'deleted') {
-      const sub = document.createElement('div');
-      sub.className = 'afdb-card-subtitle';
-      sub.textContent = nameVal;
-      idDiv.after(sub);
-    }
-
-    // ── Overview section ──
-    const overviewSection = document.createElement('div');
-    overviewSection.className = 'afdb-section';
-    overviewSection.innerHTML = '<div class="afdb-section-head" data-section="overview">' +
-      '<span>Overview</span><span class="toggle-icon">\u25BC</span></div>';
-    const overviewContent = document.createElement('div');
-    overviewContent.className = 'afdb-section-content';
-
-    const grid = document.createElement('div');
-    grid.className = 'afdb-grid';
-
-    // Gather overview fields
-    const fields = [
-      { k: 'Cluster size', v: colVal('Members', idx) },
-      { k: 'Superkingdom', v: colVal('superkingdom', idx) || colVal('Kingdom', idx) },
-      { k: 'Dark protein', v: (() => { const d = colVal('is_dark', idx); return d === 'dark' ? 'Yes' : d === 'annotated' ? 'No' : fmt(d); })() },
-      { k: 'pLDDT (rep)', v: fmt(colVal('pLDDT (rep)', idx)) },
-      { k: 'Seq length', v: (() => { const v = colVal('sequence length (log10)', idx); return v != null && !isNaN(v) ? Math.round(Math.pow(10, v)).toLocaleString() + ' aa' : null; })() },
-    ];
-
-    for (const f of fields) {
-      if (f.v == null) continue;
-      grid.innerHTML += '<span class="k">' + f.k + '</span><span class="v">' + f.v + '</span>';
-    }
-
-    // Annotation score as stars
-    const score = colVal('annotation score', idx);
-    if (score != null && !isNaN(score) && score > 0) {
-      grid.innerHTML += '<span class="k">Annotation</span><span class="v">' + stars(score) + '</span>';
-    }
-
-    // InterPro
-    const iprFamily = colVal('interpro_family', idx);
-    const iprId = colVal('interpro_id', idx);
-    if (iprFamily || iprId) {
-      const display = iprId
-        ? '<a href="https://www.ebi.ac.uk/interpro/entry/InterPro/' + iprId + '/" target="_blank" rel="noopener">' +
-          (iprFamily || iprId) + '</a>'
-        : iprFamily;
-      grid.innerHTML += '<span class="k">Family</span><span class="v">' + display + '</span>';
-    }
-
-    overviewContent.appendChild(grid);
-    overviewSection.appendChild(overviewContent);
-    cardBody.appendChild(overviewSection);
-
-    // ── Structure section ──
-    const structSection = document.createElement('div');
-    structSection.className = 'afdb-section';
-    structSection.innerHTML = '<div class="afdb-section-head" data-section="structure">' +
-      '<span>3D Structure</span><span class="toggle-icon">\u25BC</span></div>';
-    const structContent = document.createElement('div');
-    structContent.className = 'afdb-section-content';
-    const structWrap = document.createElement('div');
-    structWrap.className = 'afdb-structure-wrap';
-    structContent.appendChild(structWrap);
-    structSection.appendChild(structContent);
-    cardBody.appendChild(structSection);
-    loadStructure(uid, structWrap);
-
-    // ── Annotations section (on-demand) ──
-    const annoSection = document.createElement('div');
-    annoSection.className = 'afdb-section';
-    annoSection.innerHTML = '<div class="afdb-section-head" data-section="annotations">' +
-      '<span>Annotations</span><span class="toggle-icon">\u25BC</span></div>';
-    const annoContent = document.createElement('div');
-    annoContent.className = 'afdb-section-content';
-    const annoInner = document.createElement('div');
-    annoContent.appendChild(annoInner);
-    annoSection.appendChild(annoContent);
-    cardBody.appendChild(annoSection);
-    fetchAnnotations(uid, annoInner);
-
-    // ── Links bar ──
-    const links = document.createElement('div');
-    links.className = 'afdb-links';
-    links.innerHTML =
-      '<a href="https://www.uniprot.org/uniprot/' + uid + '" target="_blank" rel="noopener">UniProt</a>' +
-      '<a href="https://alphafold.ebi.ac.uk/entry/' + uid + '" target="_blank" rel="noopener">AlphaFold</a>' +
-      '<a href="https://search.foldseek.com/search?accession=' + uid + '&source=AlphaFoldDB" target="_blank" rel="noopener">Foldseek</a>';
-    cardBody.appendChild(links);
-
-    // ── Section collapse toggles ──
-    card.querySelectorAll('.afdb-section-head').forEach(head => {
-      head.addEventListener('click', () => {
-        head.parentElement.classList.toggle('collapsed');
-      });
-    });
-  });
-
-  // ── Tooltip override ──
-  const _origTooltip = showTooltip;
-  showTooltip = function(idx) {
-    _origTooltip(idx);
-    const pc = columns[proteinColumn];
-    if (!pc) return;
-    const uid = pc.values[idx];
-    if (!uid || typeof uid !== 'string') return;
-    const rows = tooltip.querySelectorAll('.tooltip-row');
-    for (const r of rows) {
-      const lbl = r.querySelector('.tooltip-label');
-      const val = r.querySelector('.tooltip-value');
-      if (lbl && val && lbl.textContent.trim() === proteinColumn) {
-        val.innerHTML = '<a style="color:#7fb8f0;text-decoration:none" href="https://www.uniprot.org/uniprot/' +
-          uid + '" target="_blank" rel="noopener">' + uid + '</a>';
-        break;
-      }
-    }
-  };
-
-  // ── Draggable card ──
-  (function() {
-    let dragging = false, startX, startY, origX, origY;
-    cardStack.addEventListener('mousedown', (e) => {
-      if (!e.target.closest('.card-header')) return;
-      e.preventDefault();
-      dragging = true;
-      const rect = cardStack.getBoundingClientRect();
-      startX = e.clientX; startY = e.clientY;
-      origX = rect.left; origY = rect.top;
-      document.body.classList.add('afdb-dragging');
-    });
-    document.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - startX, dy = e.clientY - startY;
-      cardStack.style.left = (origX + dx) + 'px';
-      cardStack.style.top = (origY + dy) + 'px';
-      cardStack.style.right = 'auto';
-      cardStack.style.bottom = 'auto';
-    });
-    document.addEventListener('mouseup', () => {
-      if (!dragging) return;
-      dragging = false;
-      document.body.classList.remove('afdb-dragging');
-    });
-  })();
-
-
-  console.log('AFDB visualization enabled:', proteinColumn);
 }
 `;
 
